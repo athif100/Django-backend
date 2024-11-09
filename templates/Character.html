@@ -1,0 +1,12 @@
+<form method="post"enctype="multipart/form-data">
+    {%csrf_token%}
+    <label>firstname</label>
+    <input name="firstname">
+    <label>secondname</label>
+    <input name="secondname">
+   <label>image</label>
+   <input name="image" type="file">
+   <label>discription</label>
+   <input name="discription">
+   <button>SAVE</button>
+</form>

@@ -6,7 +6,12 @@ from . views import profile
 from . views import fav_anime
 from . views import disliked_anime
 from . views import read_Artical
-from.views import create_artical
+from.views import create_artical 
+from.views import create_character
+from.views import create_techqnique
+from.views import show_all_characters
+from .views import show_all_techniques
+from.views import show_1_character
 urlpatterns = [
     path("Athif/", homepage, name="homepage"),
     path("Gojo/", about, name="about"),
@@ -16,5 +21,12 @@ urlpatterns = [
     path ("Saitama/", fav_anime, name="fav_anime"),
     path ("Sukuna/",disliked_anime , name="disliked_anime"),
     path ("shadow/<int:number>" ,read_Artical, name="read"),
-    path ("Zoro/",create_artical, name="create")
+    path ("Zoro/",create_artical, name="create"),
+    path ("Sao/",create_character, name="character"),
+    path ("Toji/",create_techqnique, name="Technique"),
+     path ("Diablo/",show_all_characters, name="show_allchar"),
+     path ("Isagi/",show_all_techniques,name= "show_alltech"),
+     path ("Goku/<int:id>",show_1_character,name= "show_1char")
+     
+
 ]
