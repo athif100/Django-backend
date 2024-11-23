@@ -1,0 +1,8 @@
+<form method="post">
+    {%csrf_token%}
+    <input name="red_name"value="{{my_technique.red_name}}">
+    <input name="damage_amount"value="{{my_technique.damage_amount}}">
+    <input name="owner"value="{{my_technique.owner}}">
+    <button>Save changes</button>
+
+</form>

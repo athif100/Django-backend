@@ -4,7 +4,7 @@ from.models import Artical
 from django.shortcuts import get_object_or_404
 from.models import Characters
 from.models import Technique
-
+from django.shortcuts import redirect
 # Create your views here.
 def homepage (request):
     return HttpResponse("hello from python") 
@@ -72,4 +72,46 @@ def show_all_techniques(request,):
 def show_1_character(request,id):
     my_character=Characters.objects.get(pk=id) 
     return render (request,"show_1char.html",{"my_character":my_character})
+
+def show_1_technique(request,id):
+    my_technique=Technique.objects.get(pk=id) 
+    return render (request,"show_1tech.html",{"my_technique":my_technique})
     
+def edit_character(request,id):
+    my_character=Characters.objects.get(pk=id)
+    if request.method =="POST":
+        firstname= request.POST.get("firstname")
+        print (firstname)
+        secondname= request.POST.get("secondname")
+        print (secondname)
+        discription= request.POST.get("discription")
+        print (discription)
+        image= request.FILES.get("image")
+        print (image)
+        my_character.first_name=firstname
+        my_character.second_name=secondname
+        my_character.discription=discription
+        my_character.image=image
+        my_character.save()
+    return render (request,"edit_char.html",{"my_character":my_character})
+
+def edit_teqnique(request,id):
+    my_technique=Technique.objects.get(pk=id)
+    if request.method=="POST":
+        red_name=request.POST.get("red_name")
+        damage_amount=request.POST.get("damage_amount")
+        owner=request.POST.get("owner")
+        my_technique.red_name=red_name
+        my_technique.damage_amount=damage_amount
+        #my_technique.owner=owner
+        my_technique.save()
+    return render (request,"edit_tech.html",{"my_technique":my_technique})
+def delete_character(request,id):
+    my_character=Characters.objects.get(pk=id)
+    my_character.delete()
+    return redirect ("homepage")
+
+def delete_technique(request,id):
+    my_technique=Technique.objects.get(pk=id)
+    my_technique.delete()
+    return redirect ("homepage")

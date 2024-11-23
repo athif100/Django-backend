@@ -1,0 +1,13 @@
+<form method="post"enctype="multipart/form-data">
+    {%csrf_token%}
+    <label>firstname</label>
+    <input name="firstname"value="{{my_character.first_name}}">
+    <label>secondname</label>
+    <input name="secondname"value="{{my_character.second_name}}">
+   <label>image</label>
+   <img src="{{my_character.image.url}}">
+   <input name="image" type="file">
+   <label>discription</label>
+   <input name="discription"value="{{my_character.discription}}">
+   <button>SAVE</button>
+</form>
